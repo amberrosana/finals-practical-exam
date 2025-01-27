@@ -88,6 +88,12 @@
             color: #ccc;
         }
 
+        .timestamp {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+        }
+
         a, button {
             display: inline-block;
             padding: 10px 20px;
@@ -119,6 +125,12 @@
         .create-button:hover {
             background: #1e7e34;
         }
+
+        .posts {
+            max-height: 400px;  
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -146,6 +158,9 @@
                         <li>
                             <h3>{{ $post->title }}</h3>
                             <p>{{ $post->body }}</p>
+                            <div class="timestamp">
+                                <strong>Created at:</strong> {{ $post->created_at->format('F j, Y, g:i a') }}
+                            </div>
                             <div>
                                 <a href="{{ route('post.edit', $post->id) }}">Edit</a>
                                 <form action="{{ route('post.delete', $post->id) }}" method="POST" style="display: inline;">
